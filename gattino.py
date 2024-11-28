@@ -42,6 +42,7 @@ def run_command(command):
         return None
 
 def extract_first_code_block(text):
+    text.replace('```bash', '```')
     match = re.search(r"```(.*?)```", text, re.DOTALL)
     if match:
         return match.group(1).strip()
