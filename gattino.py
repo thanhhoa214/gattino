@@ -14,7 +14,7 @@ def main(args: list[str]) -> str:
 │ ┬├─┤ │  │ │││││ │
 └─┘┴ ┴ ┴  ┴ ┴┘└┘└─┘
 
-Explain in plain English the command you want to execute.
+What do you want to do?
 """)
 
     human_language_command = input('> ')
