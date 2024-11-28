@@ -25,11 +25,14 @@ ATTENTION: please fence the command using a code block. No explanation needed. D
 
 Action to execute: {human_language_command}
 """
-    with open('/tmp/gattino_prompt.txt', 'w') as file:
-        file.write(prompt + '\n')
+    write_file('/tmp/gattino_prompt.txt', prompt)
     model_output = run_command(f'/usr/local/bin/ollama run codellama '' --nowordwrap < /tmp/gattino_prompt.txt')
     command = extract_first_code_block(model_output)
     return command
+
+def write_file(path, content):
+    with open(path, 'w') as file:
+        file.write(content + '\n')
 
 def run_command(command):
     try:
