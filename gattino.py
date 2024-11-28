@@ -27,7 +27,7 @@ Action to execute: {human_language_command}
     print("PROMPT:")
     print(prompt)
     with open('/tmp/gattino_prompt.txt', 'w') as file:
-        file.write(human_language_command + '\n')
+        file.write(prompt + '\n')
     model_output = run_command(f'/usr/local/bin/ollama run codellama '' --nowordwrap < /tmp/gattino_prompt.txt')
     return model_output
 
