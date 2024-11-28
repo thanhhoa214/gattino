@@ -1,8 +1,9 @@
 from kitty.boss import Boss # type: ignore
+import subprocess
 
 def main(args: list[str]) -> str:
-    # this is the main entry point of the kitten, it will be executed in
-    # the overlay window when the kitten is launched
+    # https://www.asciiart.eu/animals/cats
+    # http://patorjk.com/software/taag/#p=display&f=Calvin%20S&t=gattino
     print(""" _._     _,-'""`-._
 (,-.`._,'(       |\\`-/|
     `-.-' \\ )-`( , o o)
