@@ -1,5 +1,4 @@
 from kitty.boss import Boss # type: ignore
-import subprocess
 import re
 import json
 import system_utils
