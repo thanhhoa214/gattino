@@ -1,10 +1,10 @@
 from kitty.boss import Boss # type: ignore
 import re
-import system_utils
-import model
-import config
-import ui
-import parser
+import lib.system_utils as system_utils
+import lib.model as model
+import lib.config as config
+import lib.ui as ui
+import lib.parser as parser
 
 def main(args: list[str]) -> str:
     # https://www.asciiart.eu/animals/cats
