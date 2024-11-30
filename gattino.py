@@ -1,8 +1,8 @@
 from kitty.boss import Boss # type: ignore
 import re
-import json
 import system_utils
 import model
+import config
 
 def main(args: list[str]) -> str:
     # https://www.asciiart.eu/animals/cats
@@ -11,8 +11,8 @@ def main(args: list[str]) -> str:
     human_language_command = print_input_line()
     prompt = model.get_prompt(human_language_command)
     system_utils.write_file('/tmp/gattino_prompt.txt', prompt)
-    config = load_config()
-    model_name = config.get('model', 'codellama')
+    config_data = config.load_config()
+    model_name = config_data.get('model', 'codellama')
     model_output = system_utils.run_command(f'/usr/local/bin/ollama run {model_name} "" --nowordwrap < /tmp/gattino_prompt.txt')
     command = extract_first_code_block(model_output)
     return command
@@ -28,19 +28,6 @@ def handle_result(args: list[str], answer: str, target_window_id: int, boss: Bos
     w = boss.window_id_map.get(target_window_id)
     if w is not None:
         w.paste_text(answer)
-
-def load_config() -> dict:
-    config_path = '/Users/szappala/.config/kitty/gattino/gattino.config.json'
-    try:
-        with open(config_path, 'r') as f:
-            config = json.load(f)
-        return config
-    except FileNotFoundError:
-        print(f"Config file not found at {config_path}")
-        return {}
-    except json.JSONDecodeError as e:
-        print(f"Error parsing config file: {e}")
-        return {}
 
 def print_intro() -> None:
     # https://www.asciiart.eu/animals/cats
