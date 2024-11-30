@@ -3,37 +3,6 @@ import subprocess
 import re
 import json
 
-def load_config() -> dict:
-    config_path = '/Users/szappala/.config/kitty/gattino/gattino.config.json'
-    try:
-        with open(config_path, 'r') as f:
-            config = json.load(f)
-        return config
-    except FileNotFoundError:
-        print(f"Config file not found at {config_path}")
-        return {}
-    except json.JSONDecodeError as e:
-        print(f"Error parsing config file: {e}")
-        return {}
-
-def print_intro() -> None:
-    # https://www.asciiart.eu/animals/cats
-    # http://patorjk.com/software/taag/#p=display&f=Calvin%20S&t=gattino
-    print(""" _._     _,-'""`-._
-(,-.`._,'(       |\\`-/|
-    `-.-' \\ )-`( , o o)
-          `-    \\`_`"'-
-
-┌─┐┌─┐┌┬┐┌┬┐┬┌┐┌┌─┐
-│ ┬├─┤ │  │ │││││ │
-└─┘┴ ┴ ┴  ┴ ┴┘└┘└─┘
-
-""")
-    
-def print_input_line() -> str:
-    print('What do you want to do?')
-    return input('> ')
-
 def main(args: list[str]) -> str:
     # https://www.asciiart.eu/animals/cats
     print_intro()
@@ -79,3 +48,34 @@ ATTENTION: please fence the command using a code block. No explanation needed. D
 
 Action to execute: {human_language_command}
 """
+
+def load_config() -> dict:
+    config_path = '/Users/szappala/.config/kitty/gattino/gattino.config.json'
+    try:
+        with open(config_path, 'r') as f:
+            config = json.load(f)
+        return config
+    except FileNotFoundError:
+        print(f"Config file not found at {config_path}")
+        return {}
+    except json.JSONDecodeError as e:
+        print(f"Error parsing config file: {e}")
+        return {}
+
+def print_intro() -> None:
+    # https://www.asciiart.eu/animals/cats
+    # http://patorjk.com/software/taag/#p=display&f=Calvin%20S&t=gattino
+    print(""" _._     _,-'""`-._
+(,-.`._,'(       |\\`-/|
+    `-.-' \\ )-`( , o o)
+          `-    \\`_`"'-
+
+┌─┐┌─┐┌┬┐┌┬┐┬┌┐┌┌─┐
+│ ┬├─┤ │  │ │││││ │
+└─┘┴ ┴ ┴  ┴ ┴┘└┘└─┘
+
+""")
+
+def print_input_line() -> str:
+    print('What do you want to do?')
+    return input('> ')
