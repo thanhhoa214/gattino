@@ -6,9 +6,7 @@ import lib.ui as ui
 import lib.parser as parser
 
 def main(args: list[str]) -> str:
-    # https://www.asciiart.eu/animals/cats
     ui.print_intro()
-
     human_language_command = ui.print_input_line()
     prompt = model.get_prompt(human_language_command)
     system_utils.write_file('/tmp/gattino_prompt.txt', prompt)
