@@ -3,12 +3,13 @@ import re
 import system_utils
 import model
 import config
+import ui
 
 def main(args: list[str]) -> str:
     # https://www.asciiart.eu/animals/cats
-    print_intro()
+    ui.print_intro()
 
-    human_language_command = print_input_line()
+    human_language_command = ui.print_input_line()
     prompt = model.get_prompt(human_language_command)
     system_utils.write_file('/tmp/gattino_prompt.txt', prompt)
     config_data = config.load_config()
@@ -28,21 +29,3 @@ def handle_result(args: list[str], answer: str, target_window_id: int, boss: Bos
     w = boss.window_id_map.get(target_window_id)
     if w is not None:
         w.paste_text(answer)
-
-def print_intro() -> None:
-    # https://www.asciiart.eu/animals/cats
-    # http://patorjk.com/software/taag/#p=display&f=Calvin%20S&t=gattino
-    print(""" _._     _,-'""`-._
-(,-.`._,'(       |\\`-/|
-    `-.-' \\ )-`( , o o)
-          `-    \\`_`"'-
-
-┌─┐┌─┐┌┬┐┌┬┐┬┌┐┌┌─┐
-│ ┬├─┤ │  │ │││││ │
-└─┘┴ ┴ ┴  ┴ ┴┘└┘└─┘
-
-""")
-
-def print_input_line() -> str:
-    print('What do you want to do?')
-    return input('> ')
