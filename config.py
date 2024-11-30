@@ -11,4 +11,4 @@ def load_config() -> dict:
         return {}
     except json.JSONDecodeError as e:
         print(f"Error parsing config file: {e}")
-        return {} 
+        return {}
