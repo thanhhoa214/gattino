@@ -16,7 +16,7 @@ def load_config() -> dict:
         print(f"Error parsing config file: {e}")
         return {}
 
-def main(args: list[str]) -> str:
+def print_intro() -> None:
     # https://www.asciiart.eu/animals/cats
     # http://patorjk.com/software/taag/#p=display&f=Calvin%20S&t=gattino
     print(""" _._     _,-'""`-._
@@ -28,10 +28,17 @@ def main(args: list[str]) -> str:
 │ ┬├─┤ │  │ │││││ │
 └─┘┴ ┴ ┴  ┴ ┴┘└┘└─┘
 
-What do you want to do?
 """)
+    
+def print_input_line() -> str:
+    print('What do you want to do?')
+    return input('> ')
 
-    human_language_command = input('> ')
+def main(args: list[str]) -> str:
+    # https://www.asciiart.eu/animals/cats
+    print_intro()
+
+    human_language_command = print_input_line()
     prompt = f"""
 You will be given an action in human language to be executed on a bash shell.
 Please generate a single line bash command that executes the action.
