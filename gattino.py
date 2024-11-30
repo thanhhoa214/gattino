@@ -2,6 +2,7 @@ from kitty.boss import Boss # type: ignore
 import subprocess
 import re
 import json
+from system_utils import write_file
 
 def main(args: list[str]) -> str:
     # https://www.asciiart.eu/animals/cats
@@ -15,10 +16,6 @@ def main(args: list[str]) -> str:
     model_output = run_command(f'/usr/local/bin/ollama run {model_name} "" --nowordwrap < /tmp/gattino_prompt.txt')
     command = extract_first_code_block(model_output)
     return command
-
-def write_file(path, content):
-    with open(path, 'w') as file:
-        file.write(content + '\n')
 
 def run_command(command):
     try:
