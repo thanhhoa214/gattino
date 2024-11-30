@@ -1,9 +1,9 @@
 from kitty.boss import Boss # type: ignore
-import lib.system_utils as system_utils
-import lib.model as model
-import lib.config as config
-import lib.ui as ui
-import lib.parser as parser
+import src.system_utils as system_utils
+import src.model as model
+import src.config as config
+import src.ui as ui
+import src.parser as parser
 
 def main(args: list[str]) -> str:
     ui.print_intro()
