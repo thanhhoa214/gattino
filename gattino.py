@@ -1,5 +1,4 @@
 from kitty.boss import Boss # type: ignore
-import re
 import lib.system_utils as system_utils
 import lib.model as model
 import lib.config as config
