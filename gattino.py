@@ -39,13 +39,7 @@ def main(args: list[str]) -> str:
     print_intro()
 
     human_language_command = print_input_line()
-    prompt = f"""
-You will be given an action in human language to be executed on a bash shell.
-Please generate a single line bash command that executes the action.
-ATTENTION: please fence the command using a code block. No explanation needed. Do not prefix the line with `$` or `#`.
-
-Action to execute: {human_language_command}
-"""
+    prompt = get_prompt(human_language_command)
     write_file('/tmp/gattino_prompt.txt', prompt)
     config = load_config()
     model_name = config.get('model', 'codellama')
@@ -76,3 +70,12 @@ def handle_result(args: list[str], answer: str, target_window_id: int, boss: Bos
     w = boss.window_id_map.get(target_window_id)
     if w is not None:
         w.paste_text(answer)
+
+def get_prompt(human_language_command: str) -> str:
+    return f"""
+You will be given an action in human language to be executed on a bash shell.
+Please generate a single line bash command that executes the action.
+ATTENTION: please fence the command using a code block. No explanation needed. Do not prefix the line with `$` or `#`.
+
+Action to execute: {human_language_command}
+"""
