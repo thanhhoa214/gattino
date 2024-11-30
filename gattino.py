@@ -1,6 +1,20 @@
 from kitty.boss import Boss # type: ignore
 import subprocess
 import re
+import json
+
+def load_config() -> dict:
+    config_path = '/Users/szappala/.config/kitty/gattino/gattino.config.json'
+    try:
+        with open(config_path, 'r') as f:
+            config = json.load(f)
+        return config
+    except FileNotFoundError:
+        print(f"Config file not found at {config_path}")
+        return {}
+    except json.JSONDecodeError as e:
+        print(f"Error parsing config file: {e}")
+        return {}
 
 def main(args: list[str]) -> str:
     # https://www.asciiart.eu/animals/cats
@@ -26,7 +40,9 @@ ATTENTION: please fence the command using a code block. No explanation needed. D
 Action to execute: {human_language_command}
 """
     write_file('/tmp/gattino_prompt.txt', prompt)
-    model_output = run_command(f'/usr/local/bin/ollama run codellama '' --nowordwrap < /tmp/gattino_prompt.txt')
+    config = load_config()
+    model_name = config.get('model', 'codellama')
+    model_output = run_command(f'/usr/local/bin/ollama run {model_name} "" --nowordwrap < /tmp/gattino_prompt.txt')
     command = extract_first_code_block(model_output)
     return command
 
