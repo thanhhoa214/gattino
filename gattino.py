@@ -2,7 +2,7 @@ from kitty.boss import Boss # type: ignore
 import subprocess
 import re
 import json
-from system_utils import write_file
+import system_utils
 
 def main(args: list[str]) -> str:
     # https://www.asciiart.eu/animals/cats
@@ -10,20 +10,12 @@ def main(args: list[str]) -> str:
 
     human_language_command = print_input_line()
     prompt = get_prompt(human_language_command)
-    write_file('/tmp/gattino_prompt.txt', prompt)
+    system_utils.write_file('/tmp/gattino_prompt.txt', prompt)
     config = load_config()
     model_name = config.get('model', 'codellama')
-    model_output = run_command(f'/usr/local/bin/ollama run {model_name} "" --nowordwrap < /tmp/gattino_prompt.txt')
+    model_output = system_utils.run_command(f'/usr/local/bin/ollama run {model_name} "" --nowordwrap < /tmp/gattino_prompt.txt')
     command = extract_first_code_block(model_output)
     return command
-
-def run_command(command):
-    try:
-        output = subprocess.check_output(command, shell=True)
-        return output.decode('utf-8')
-    except subprocess.CalledProcessError as e:
-        print(f"Command failed with error code {e.returncode}")
-        return None
 
 def extract_first_code_block(text):
     text = text.replace('```bash', '```')
