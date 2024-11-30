@@ -4,6 +4,7 @@ import system_utils
 import model
 import config
 import ui
+import parser
 
 def main(args: list[str]) -> str:
     # https://www.asciiart.eu/animals/cats
@@ -15,15 +16,8 @@ def main(args: list[str]) -> str:
     config_data = config.load_config()
     model_name = config_data.get('model', 'codellama')
     model_output = system_utils.run_command(f'/usr/local/bin/ollama run {model_name} "" --nowordwrap < /tmp/gattino_prompt.txt')
-    command = extract_first_code_block(model_output)
+    command = parser.extract_first_code_block(model_output)
     return command
-
-def extract_first_code_block(text):
-    text = text.replace('```bash', '```')
-    match = re.search(r"```(.*?)```", text, re.DOTALL)
-    if match:
-        return match.group(1).strip()
-    return ""
 
 def handle_result(args: list[str], answer: str, target_window_id: int, boss: Boss) -> None:
     w = boss.window_id_map.get(target_window_id)
