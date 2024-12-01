@@ -1,6 +1,6 @@
 # Gattino 🐱
 
-A kitty terminal extension that translates human language commands into terminal commands using ollama.
+A [kitty terminal](https://sw.kovidgoyal.net/kitty/) extension that turns plain language into commands using Ollama.
 
 ![Demo](assets/demo.gif)
 
