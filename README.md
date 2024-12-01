@@ -19,11 +19,13 @@ map cmd+shift+g kitten gattino/gattino.py
 ```
 
 ### Requirements
+
+- [kitty terminal](https://sw.kovidgoyal.net/kitty/)
 - [ollama](https://ollama.ai/)
 
 ## Configuration
 
 The configuration is located in `~/.config/kitty/gattino/gattino.config.json` and the following options are available:
 
-* `model`: The ollama model to use for command translation (default: "codellama")
-* `ollama_path`: Path to the ollama executable (default: "/usr/local/bin/ollama")
+- `model`: The ollama model to use for command translation (default: "codellama")
+- `ollama_path`: Path to the ollama executable (default: "/usr/local/bin/ollama")
