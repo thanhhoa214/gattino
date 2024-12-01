@@ -1,4 +1,7 @@
 import subprocess
+import sys
+import threading
+import src.ui as ui
 
 
 def write_file(path: str, content: str) -> None:
@@ -8,10 +11,25 @@ def write_file(path: str, content: str) -> None:
 
 
 def run_command(command: str, input: str = None) -> str:
-    process = subprocess.run(
+    process = subprocess.Popen(
         command.split(),
-        input=input,
-        capture_output=True,
+        stdin=subprocess.PIPE,
+        stdout=subprocess.PIPE,
+        stderr=subprocess.PIPE,
         text=True
     )
-    return process.stdout
+
+    # Start spinner in background thread
+    spinner_thread = threading.Thread(target=ui.show_spinner, args=(process,))
+    spinner_thread.start()
+
+    # Send input and get output
+    stdout, stderr = process.communicate(input=input)
+
+    # Wait for spinner to finish
+    spinner_thread.join()
+
+    if stderr:
+        print(stderr, end='', file=sys.stderr)
+
+    return stdout
