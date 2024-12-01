@@ -1,3 +1,4 @@
 {
-    "model": "codellama"
+    "model": "codellama",
+    "ollama_path": "/usr/local/bin/ollama"
 }
