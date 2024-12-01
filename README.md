@@ -4,6 +4,11 @@ A kitty terminal extension that translates human language commands into bash com
 
 ![Demo](assets/demo.gif)
 
+## Requirements
+
+- [kitty terminal](https://sw.kovidgoyal.net/kitty/)
+- [ollama](https://ollama.ai/)
+
 ## Installation
 
 1. Clone the repository to `~/.config/kitty/gattino`
@@ -17,11 +22,6 @@ git clone https://github.com/szappala/gattino.git ~/.config/kitty/gattino
 ```bash
 map cmd+shift+g kitten gattino/gattino.py
 ```
-
-### Requirements
-
-- [kitty terminal](https://sw.kovidgoyal.net/kitty/)
-- [ollama](https://ollama.ai/)
 
 ## Configuration
 
