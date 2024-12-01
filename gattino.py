@@ -23,6 +23,6 @@ def main(args: list[str]) -> str:
 
 
 def handle_result(args: list[str], answer: str, target_window_id: int, boss: Boss) -> None:
-    w = boss.window_id_map.get(target_window_id)
-    if w is not None:
-        w.paste_text(answer)
+    window = boss.window_id_map.get(target_window_id)
+    if window is not None:
+        window.paste_text(answer)
