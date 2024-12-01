@@ -17,7 +17,7 @@ def main(args: list[str]) -> str:
 
     # Use subprocess with input parameter instead of temporary file
     model_output = system_utils.run_command(
-        f'/usr/local/bin/ollama run {model_name} "" --nowordwrap',
+        f'/usr/local/bin/ollama run {model_name} --nowordwrap',
         input=prompt)
     command = parser.extract_first_code_block(model_output)
     return command
