@@ -11,10 +11,12 @@ def main(args: list[str]) -> str:
     ui.print_intro()
     human_language_command = ui.print_input_line()
     prompt = model.get_prompt(human_language_command)
-    system_utils.write_file('/tmp/gattino_prompt.txt', prompt)
     model_name = config_data.get('model', 'codellama')
+
+    # Use subprocess with input parameter instead of temporary file
     model_output = system_utils.run_command(
-        f'/usr/local/bin/ollama run {model_name} "" --nowordwrap < /tmp/gattino_prompt.txt')
+        f'/usr/local/bin/ollama run {model_name} "" --nowordwrap',
+        input=prompt)
     command = parser.extract_first_code_block(model_output)
     return command
 
