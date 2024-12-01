@@ -23,6 +23,10 @@ git clone https://github.com/szappala/gattino.git ~/.config/kitty/gattino
 map cmd+shift+g kitten gattino/gattino.py
 ```
 
+## Usage
+
+Press `cmd+shift+g` (or the command that you have mapped to gattino) on your kitty terminal to open the gattino prompt.
+
 ## Configuration
 
 The configuration is located in `~/.config/kitty/gattino/gattino.config.json` and the following options are available:
