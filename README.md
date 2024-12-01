@@ -33,3 +33,7 @@ The configuration is located in `~/.config/kitty/gattino/gattino.config.json` an
 
 - `model`: The ollama model to use for command translation (default: "codellama")
 - `ollama_path`: Path to the ollama executable (default: "/usr/local/bin/ollama")
+
+## Contributing
+
+Contributions are welcome! See [CONTRIBUTING.md](CONTRIBUTING.md) for details on how to get started.
