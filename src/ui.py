@@ -16,7 +16,7 @@ class Spinner:
         return frame
 
     def show(self, process: subprocess.Popen) -> None:
-        while process.poll() is None:  # While process is still running
+        while process.poll() is None:  # Run this thread only if the process is still running
             print(f"\r{self.next_frame()}", end='', file=sys.stderr)
             time.sleep(0.1)
         print("\r", end='', file=sys.stderr)  # Clear the spinner
