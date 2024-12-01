@@ -15,7 +15,6 @@ def main(args: list[str]) -> str:
     prompt = model.get_prompt(human_language_command)
     model_name = config_data.get('model', 'codellama')
 
-    # Use subprocess with input parameter instead of temporary file
     model_output = system_utils.run_command(
         f'/usr/local/bin/ollama run {model_name} --nowordwrap',
         input=prompt)
