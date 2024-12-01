@@ -6,6 +6,18 @@ A kitty terminal extension that translates human language commands into bash com
 
 ## Installation
 
+1. Clone the repository to `~/.config/kitty/gattino`
+
+```bash
+git clone https://github.com/szappala/gattino.git ~/.config/kitty/gattino
+```
+
+2. Add the following line to `~/.config/kitty/kitty.conf` (note, replace `cmd` with `ctrl` if you are not on a mac)
+
+```bash
+map cmd+shift+g kitten gattino/gattino.py
+```
+
 ### Requirements
 - [ollama](https://ollama.ai/)
 
