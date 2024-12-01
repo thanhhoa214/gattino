@@ -38,7 +38,7 @@ def print_intro() -> None:
 
 
 def print_input_line() -> str:
-    print('What do you want to do?')
+    print('What do you want to do?\n')
     return input('> ')
 
 
