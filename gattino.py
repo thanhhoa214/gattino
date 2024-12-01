@@ -10,6 +10,8 @@ def main(args: list[str]) -> str:
     config_data = config.load_config()
     ui.print_intro()
     human_language_command = ui.print_input_line()
+    if not human_language_command:
+        return 0
     prompt = model.get_prompt(human_language_command)
     model_name = config_data.get('model', 'codellama')
 
