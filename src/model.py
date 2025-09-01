@@ -9,6 +9,8 @@ Requirements:
 * The command should be efficient and follow best practices
 * Do not use sudo unless explicitly required
 * Use common bash utilities (grep, sed, awk, etc.) when appropriate
+* Always prioritize minimal access command first
+* DO NOT try to access my whole file system
 
 Format your response as follows:
 * Only output the command in a code block
