@@ -1,5 +1,6 @@
 def get_prompt(human_language_command: str) -> str:
     return f"""
+I'm using MacOS, with zsh.
 You will be given an action in natural language to be executed on a bash shell.
 Your task is to generate a single line bash command that accomplishes this action.
 
